@@ -6,7 +6,7 @@ const http = require("http").createServer(app);
 const io = require("socket.io");
 const socket = io(http, {
   cors: {
-    origin: "http://127.0.0.1:5500",
+    origin: "http://localhost:5000",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -19,7 +19,7 @@ app.use(cors());
 
 socket.on("connection", (socket: any) => {
   socket.on("message", (msg: any) => {
-    socket.emit("chat message", msg);
+    socket.emit("message", msg);
     console.log(msg);
   });
 });
