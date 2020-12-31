@@ -10,6 +10,7 @@ import { useState } from "react";
 
 export const App = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <Router>
@@ -37,7 +38,7 @@ export const App = () => {
                     to="/"
                     exact
                     activeClassName="border-indigo-500"
-                    className="border-transparent text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    className="border-transparent text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition ease-in duration-75"
                   >
                     Home
                   </NavLink>
@@ -46,7 +47,7 @@ export const App = () => {
                     to="/chat"
                     exact
                     activeClassName="border-indigo-500"
-                    className="border-transparent text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    className="border-transparent text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition ease-in duration-75"
                   >
                     Chat
                   </NavLink>
@@ -80,6 +81,9 @@ export const App = () => {
                       className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       id="user-menu"
                       aria-haspopup="true"
+                      onClick={() => {
+                        setProfileOpen(!profileOpen);
+                      }}
                     >
                       <span className="sr-only">Open user menu</span>
                       <img
@@ -100,7 +104,11 @@ export const App = () => {
                 To: "transform opacity-0 scale-95"
             -->} */}
                   <div
-                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                    className={`${
+                      profileOpen
+                        ? "transform opacity-100 scale-100 transition ease-out duration-200"
+                        : "transform opacity-0 scale-95 transition ease-in duration-75"
+                    } origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5`}
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu"
@@ -132,7 +140,6 @@ export const App = () => {
                 </div>
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
-                {/* Mobile menu button */}
                 <button
                   className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   onClick={() => {
@@ -142,11 +149,6 @@ export const App = () => {
                   }}
                 >
                   <span className="sr-only">Open main menu</span>
-                  {/* {<!--
-              Heroicon name: menu
-
-              Menu open: "hidden", Menu closed: "block"
-            -->} */}
                   <svg
                     className="block h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -162,11 +164,6 @@ export const App = () => {
                       d="M4 6h16M4 12h16M4 18h16"
                     ></path>
                   </svg>
-                  {/* {<!--
-              Heroicon name: x
-
-              Menu open: "block", Menu closed: "hidden"
-            -->} */}
                   <svg
                     className="hidden h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -186,20 +183,12 @@ export const App = () => {
               </div>
             </div>
           </div>
-
-          {/* {   <!--
-      Mobile menu, toggle classes based on menu state.
-
-      Open: "block", closed: "hidden"
-    -->} */}
           <div
             className={`${navigationOpen ? "block" : "hidden"} ${
               navigationOpen ? "sm:block" : "sm:hidden"
             }`}
           >
             <div className="pt-2 pb-3 space-y-1">
-              {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
-
               <NavLink
                 to="/"
                 exact
@@ -208,7 +197,6 @@ export const App = () => {
               >
                 Home
               </NavLink>
-
               <NavLink
                 to="/chat"
                 exact
@@ -237,7 +225,6 @@ export const App = () => {
                 </div>
                 <button className="ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   <span className="sr-only">View notifications</span>
-                  {/* Heroicon name: bell */}
                   <svg
                     className="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
