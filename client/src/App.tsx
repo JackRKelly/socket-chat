@@ -1,31 +1,54 @@
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 
 export const App = () => {
-  const [messages, setMessages] = useState<string[]>([]);
-
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [socketState, setSocketState] = useState<Socket>();
+  const [userId, setUserId] = useState(4);
   const [inputMessage, setInputMessage] = useState("");
 
-  const socket = io("localhost:3000");
-
   useEffect(() => {
-    socket.on("message", (message: string) => {
+    const socket = io("localhost:3000");
+    setSocketState(socket);
+
+    socket.on("message", (message: Message) => {
+      console.log(message);
+
       setMessages((prevState) => [...prevState, message]);
     });
-  }, [socket]);
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  interface Message {
+    message: string;
+    uid: number;
+  }
 
   return (
     <div className="App">
       <h1>Chat w/ Socket.io</h1>
       <ul>
         {messages.map((message, index) => (
-          <li key={index}>{message}</li>
+          <li
+            key={index}
+            style={{ color: message.uid === userId ? "blue " : "black" }}
+          >
+            {message.message}
+          </li>
         ))}
       </ul>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          socket.emit("message", inputMessage);
+          if (socketState) {
+            socketState.emit("message", {
+              message: inputMessage,
+              uid: userId,
+            });
+          }
           setInputMessage("");
         }}
       >
