@@ -1,10 +1,5 @@
-export enum MessageType {
-  INDICATOR,
-  MESSAGE,
-}
-
 export interface Message {
-  type: MessageType;
+  type: string;
   content: string;
   uid: number;
 }

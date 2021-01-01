@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { MessageType, Message } from "shared/src";
+import { Message } from "shared/src";
 import cors from "cors";
 import { Socket } from "socket.io";
 
@@ -21,7 +21,7 @@ app.use(cors());
 
 io.on("connection", (socket: Socket) => {
   io.emit("message", {
-    type: MessageType.MESSAGE,
+    type: "message",
     content: "User has connected.",
     uid: 0,
   });

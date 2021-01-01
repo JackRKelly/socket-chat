@@ -1,3 +1,3 @@
-import { MessageType, Message } from "./types";
+import { Message } from "./types";
 
-export { Message, MessageType };
+export type { Message };

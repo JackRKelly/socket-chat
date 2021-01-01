@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
-import { Message, MessageType } from "shared/lib";
+import { Message } from "shared/lib";
 
 export const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -53,7 +53,7 @@ export const Chat = () => {
                   e.preventDefault();
                   if (socketState) {
                     socketState.emit("message", {
-                      type: MessageType.MESSAGE,
+                      type: "message",
                       content: inputMessage,
                       uid: userId,
                     });
