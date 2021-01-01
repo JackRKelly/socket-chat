@@ -1,12 +1,15 @@
 import { Chat } from "./pages/chat";
 import { Home } from "./pages/home";
+import { Settings } from "./pages/settings";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
+  Link,
 } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Login } from "./pages/login";
 
 export const App = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -14,7 +17,7 @@ export const App = () => {
 
   return (
     <Router>
-      <nav className="bg-white border-b border-gray-200">
+      <nav className="bg-white border-b border-gray-200 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -94,7 +97,7 @@ export const App = () => {
                     profileOpen
                       ? "transform opacity-100 scale-100 transition ease-out duration-200"
                       : "transform opacity-0 scale-95 transition ease-in duration-75"
-                  } origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5`}
+                  } origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-20`}
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="user-menu"
@@ -107,13 +110,14 @@ export const App = () => {
                     Your Profile
                   </a>
 
-                  <a
-                    href="/"
+                  <NavLink
+                    to="/settings"
+                    activeClassName="text-indigo-500"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
                   >
                     Settings
-                  </a>
+                  </NavLink>
 
                   <a
                     href="/"
@@ -261,6 +265,12 @@ export const App = () => {
       </nav>
 
       <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/settings">
+          <Settings />
+        </Route>
         <Route path="/chat">
           <Chat />
         </Route>
