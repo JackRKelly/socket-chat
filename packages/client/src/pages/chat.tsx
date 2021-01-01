@@ -51,7 +51,7 @@ export const Chat = () => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (socketState) {
+                  if (socketState && inputMessage) {
                     socketState.emit("message", {
                       type: "message",
                       content: inputMessage,
@@ -70,6 +70,7 @@ export const Chat = () => {
                       type="text"
                       name="message"
                       value={inputMessage}
+                      required
                       onChange={(e) => setInputMessage(e.target.value)}
                       className="border p-2 block w-full shadow-sm placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
                       placeholder="Message"
