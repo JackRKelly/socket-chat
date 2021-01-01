@@ -64,25 +64,27 @@ export const Chat = () => {
                   setInputMessage("");
                 }}
               >
-                <div>
-                  <label htmlFor="email" className="sr-only">
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    name="message"
-                    value={inputMessage}
-                    onChange={(e) => setInputMessage(e.target.value)}
-                    className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                    placeholder="Message"
-                  />
+                <div className="flex">
+                  <div className="flex-1">
+                    <label htmlFor="email" className="sr-only">
+                      Email
+                    </label>
+                    <input
+                      type="text"
+                      name="message"
+                      value={inputMessage}
+                      onChange={(e) => setInputMessage(e.target.value)}
+                      className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                      placeholder="Message"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="flex-3 inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Send
+                  </button>
                 </div>
-                <button
-                  type="submit"
-                  className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Send
-                </button>
               </form>
             </div>
           </div>
