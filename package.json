@@ -1,6 +1,10 @@
 {
   "private": "true",
+  "version": "0.0.0",
   "name": "socket-chat",
+  "repository": "https://github.com/JackRKelly/socket-chat.git",
+  "author": "JackRKelly <kcjackkelly@gmail.com>",
+  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],

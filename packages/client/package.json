@@ -1,7 +1,6 @@
 {
   "name": "client",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.0",
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
