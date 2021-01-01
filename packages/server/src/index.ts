@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { MessageType, Message } from "./types";
+import { MessageType, Message } from "shared/src";
 import cors from "cors";
 import { Socket } from "socket.io";
 
