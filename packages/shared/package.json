@@ -2,5 +2,16 @@
   "name": "shared",
   "version": "1.0.0",
   "main": "src/index.ts",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack"
+  },
+  "dependencies": {
+    "webpack": "^5.11.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.13",
+    "webpack-cli": "^4.3.1"
+  }
 }

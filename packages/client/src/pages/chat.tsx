@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
+import { Message, MessageType } from "shared/lib";
 
 export const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -21,17 +22,6 @@ export const Chat = () => {
       socket.disconnect();
     };
   }, []);
-
-  enum MessageType {
-    INDICATOR,
-    MESSAGE,
-  }
-
-  interface Message {
-    type: MessageType;
-    content: string;
-    uid: number;
-  }
 
   return (
     <div className="min-h-screen bg-white">

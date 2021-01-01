@@ -24,3 +24,5 @@ yarn-error.log*
 
 lerna-debug.log
 .eslintcache
+
+/packages/shared/lib/

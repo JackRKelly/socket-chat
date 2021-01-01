@@ -1,10 +1,3 @@
-export enum MessageType {
-  INDICATOR,
-  MESSAGE,
-}
+import { MessageType, Message } from "./types";
 
-export interface Message {
-  type: MessageType;
-  content: string;
-  uid: number;
-}
+export { Message, MessageType };
