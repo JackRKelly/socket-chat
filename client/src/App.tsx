@@ -6,7 +6,6 @@ import {
   Switch,
   Route,
   NavLink,
-  Link,
 } from "react-router-dom";
 import React, { useState } from "react";
 import { Login } from "./pages/login";

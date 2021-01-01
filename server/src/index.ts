@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import { MessageType, Message } from "./types";
 import cors from "cors";
 import { Socket } from "socket.io";
 
@@ -12,17 +13,6 @@ const io = socketIO(http, {
     credentials: true,
   },
 });
-
-enum MessageType {
-  INDICATOR,
-  MESSAGE,
-}
-
-interface Message {
-  type: MessageType;
-  content: string;
-  uid: number;
-}
 
 app.get("/", function (req: Request, res: Response) {
   res.send("Hello Socket");

@@ -32,6 +32,7 @@ export const Chat = () => {
     content: string;
     uid: number;
   }
+
   return (
     <div className="min-h-screen bg-white">
       <div className="py-10">
