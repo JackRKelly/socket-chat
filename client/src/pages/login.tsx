@@ -1,7 +1,10 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 export const Login = () => {
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
@@ -14,12 +17,13 @@ export const Login = () => {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               Or
-              <a
-                href="/"
+              <Link
+                to="/signup"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
-                start your 14-day free trial
-              </a>
+                {" "}
+                create an account
+              </Link>
             </p>
           </div>
           <form className="mt-8 space-y-6" action="#" method="POST">

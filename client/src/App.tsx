@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import React, { useState } from "react";
 import { Login } from "./pages/login";
+import { Signup } from "./pages/signup";
 
 export const App = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -265,6 +266,9 @@ export const App = () => {
       </nav>
 
       <Switch>
+        <Route path="/signup">
+          <Signup />
+        </Route>
         <Route path="/login">
           <Login />
         </Route>
