@@ -1,13 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
 export const Signup = () => {
   return (
     <>
-      <div className="h-screen bg-white overflow-hidden flex">
+      <div className="bg-white flex">
         <div className="flex-1 flex flex-col">
           <main className="flex-1 focus:outline-none" tabIndex={0}>
-            <div className="relative max-w-4xl mx-auto md:px-8 xl:px-0">
+            <div className="relative max-w-4xl mx-auto md:px-8 xl:px-0 pt-10 pb-16">
               <form className="space-y-8 divide-y divide-gray-200">
                 <div className="space-y-8 divide-y divide-gray-200">
                   <div>
@@ -31,14 +28,14 @@ export const Signup = () => {
                         </label>
                         <div className="mt-1 flex rounded-md shadow-sm">
                           <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                            workcation.com/
+                            example.com/
                           </span>
                           <input
                             type="text"
                             name="username"
                             id="username"
                             autoComplete="username"
-                            className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                            className="border p-2 flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                           />
                         </div>
                       </div>
@@ -55,7 +52,7 @@ export const Signup = () => {
                             id="about"
                             name="about"
                             rows={3}
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           ></textarea>
                         </div>
                         <p className="mt-2 text-sm text-gray-500">
@@ -159,7 +156,7 @@ export const Signup = () => {
                             name="first_name"
                             id="first_name"
                             autoComplete="given-name"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                       </div>
@@ -177,7 +174,7 @@ export const Signup = () => {
                             name="last_name"
                             id="last_name"
                             autoComplete="family-name"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                       </div>
@@ -195,7 +192,7 @@ export const Signup = () => {
                             name="email"
                             type="email"
                             autoComplete="email"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                       </div>
@@ -212,7 +209,7 @@ export const Signup = () => {
                             id="country"
                             name="country"
                             autoComplete="country"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           >
                             <option>United States</option>
                             <option>Canada</option>
@@ -234,7 +231,7 @@ export const Signup = () => {
                             name="street_address"
                             id="street_address"
                             autoComplete="street-address"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                       </div>
@@ -251,7 +248,7 @@ export const Signup = () => {
                             type="text"
                             name="city"
                             id="city"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                       </div>
@@ -268,7 +265,7 @@ export const Signup = () => {
                             type="text"
                             name="state"
                             id="state"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                       </div>
@@ -286,150 +283,10 @@ export const Signup = () => {
                             name="zip"
                             id="zip"
                             autoComplete="postal-code"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="border p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                  <div className="pt-8">
-                    <div>
-                      <h3 className="text-lg leading-6 font-medium text-gray-900">
-                        Notifications
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        We'll always let you know about important changes, but
-                        you pick what else you want to hear about.
-                      </p>
-                    </div>
-                    <div className="mt-6">
-                      <fieldset>
-                        <legend className="text-base font-medium text-gray-900">
-                          By Email
-                        </legend>
-                        <div className="mt-4 space-y-4">
-                          <div className="relative flex items-start">
-                            <div className="flex items-center h-5">
-                              <input
-                                id="comments"
-                                name="comments"
-                                type="checkbox"
-                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                              />
-                            </div>
-                            <div className="ml-3 text-sm">
-                              <label
-                                htmlFor="comments"
-                                className="font-medium text-gray-700"
-                              >
-                                Comments
-                              </label>
-                              <p className="text-gray-500">
-                                Get notified when someones posts a comment on a
-                                posting.
-                              </p>
-                            </div>
-                          </div>
-                          <div className="relative flex items-start">
-                            <div className="flex items-center h-5">
-                              <input
-                                id="candidates"
-                                name="candidates"
-                                type="checkbox"
-                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                              />
-                            </div>
-                            <div className="ml-3 text-sm">
-                              <label
-                                htmlFor="candidates"
-                                className="font-medium text-gray-700"
-                              >
-                                Candidates
-                              </label>
-                              <p className="text-gray-500">
-                                Get notified when a candidate applies for a job.
-                              </p>
-                            </div>
-                          </div>
-                          <div className="relative flex items-start">
-                            <div className="flex items-center h-5">
-                              <input
-                                id="offers"
-                                name="offers"
-                                type="checkbox"
-                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                              />
-                            </div>
-                            <div className="ml-3 text-sm">
-                              <label
-                                htmlFor="offers"
-                                className="font-medium text-gray-700"
-                              >
-                                Offers
-                              </label>
-                              <p className="text-gray-500">
-                                Get notified when a candidate accepts or rejects
-                                an offer.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </fieldset>
-                      <fieldset className="mt-6">
-                        <div>
-                          <legend className="text-base font-medium text-gray-900">
-                            Push Notifications
-                          </legend>
-                          <p className="text-sm text-gray-500">
-                            These are delivered via SMS to your mobile phone.
-                          </p>
-                        </div>
-                        <div className="mt-4 space-y-4">
-                          <div className="flex items-center">
-                            <input
-                              id="push_everything"
-                              name="push_notifications"
-                              type="radio"
-                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                            />
-                            <label
-                              htmlFor="push_everything"
-                              className="ml-3 block text-sm font-medium text-gray-700"
-                            >
-                              Everything
-                            </label>
-                          </div>
-                          <div className="flex items-center">
-                            <input
-                              id="push_email"
-                              name="push_notifications"
-                              type="radio"
-                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                            />
-                            <label
-                              htmlFor="push_email"
-                              className="ml-3 block text-sm font-medium text-gray-700"
-                            >
-                              Same as email
-                            </label>
-                          </div>
-                          <div className="flex items-center">
-                            <input
-                              id="push_nothing"
-                              name="push_notifications"
-                              type="radio"
-                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                            />
-                            <label
-                              htmlFor="push_nothing"
-                              className="ml-3 block text-sm font-medium text-gray-700"
-                            >
-                              No push notifications
-                            </label>
-                          </div>
-                        </div>
-                      </fieldset>
                     </div>
                   </div>
                 </div>

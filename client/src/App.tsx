@@ -23,16 +23,18 @@ export const App = () => {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <img
-                  className="block lg:hidden h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                  alt="Workflow"
-                />
-                <img
-                  className="hidden lg:block h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                  alt="Workflow"
-                />
+                <NavLink to="/" exact>
+                  <img
+                    className="block lg:hidden h-8 w-auto"
+                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    alt="Workflow"
+                  />
+                  <img
+                    className="hidden lg:block h-8 w-auto"
+                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                    alt="Workflow"
+                  />
+                </NavLink>
               </div>
               <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                 <NavLink
@@ -116,6 +118,9 @@ export const App = () => {
                     activeClassName="text-indigo-500"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
+                    onClick={() => {
+                      setProfileOpen(false);
+                    }}
                   >
                     Settings
                   </NavLink>
