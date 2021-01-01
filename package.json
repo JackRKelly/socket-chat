@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "lerna run start",
+    "start": "lerna run start --stream",
     "diff": "lerna diff"
   },
   "devDependencies": {
