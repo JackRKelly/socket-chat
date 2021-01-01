@@ -13,8 +13,14 @@ const io = socketIO(http, {
   },
 });
 
+enum MessageType {
+  INDICATOR,
+  MESSAGE,
+}
+
 interface Message {
-  message: string;
+  type: MessageType;
+  content: string;
   uid: number;
 }
 
@@ -24,13 +30,16 @@ app.get("/", function (req: Request, res: Response) {
 app.use(cors());
 
 io.on("connection", (socket: Socket) => {
-  let msg = { message: "hello welcome to socket chat!", uid: 5 };
-
-  socket.emit("message", msg);
+  io.emit("message", {
+    type: MessageType.MESSAGE,
+    content: "User has connected.",
+    uid: 0,
+  });
 
   socket.on("message", (msg: Message) => {
+    //Emit message to all users including sender
     io.emit("message", msg);
-    console.log(`message recieved from ${msg.uid}: ${msg.message}`);
+    console.log(`message recieved from ${msg.uid}: ${msg.content}`);
   });
 });
 

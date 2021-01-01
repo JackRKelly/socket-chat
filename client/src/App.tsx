@@ -1,5 +1,5 @@
-import { Chat } from "./chat";
-import { Home } from "./home";
+import { Chat } from "./pages/chat";
+import { Home } from "./pages/home";
 import {
   BrowserRouter as Router,
   Switch,

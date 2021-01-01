@@ -4,7 +4,7 @@ import { io, Socket } from "socket.io-client";
 export const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [socketState, setSocketState] = useState<Socket>();
-  const [userId, setUserId] = useState(4);
+  const [userId, setUserId] = useState(Math.floor(Math.random() * 100));
   const [inputMessage, setInputMessage] = useState("");
 
   useEffect(() => {
@@ -22,11 +22,16 @@ export const Chat = () => {
     };
   }, []);
 
-  interface Message {
-    message: string;
-    uid: number;
+  enum MessageType {
+    INDICATOR,
+    MESSAGE,
   }
 
+  interface Message {
+    type: MessageType;
+    content: string;
+    uid: number;
+  }
   return (
     <div className="min-h-screen bg-white">
       <div className="py-10">
@@ -48,7 +53,7 @@ export const Chat = () => {
                       color: message.uid === userId ? "blue " : "black",
                     }}
                   >
-                    {message.message}
+                    {message.uid}: {message.content}
                   </li>
                 ))}
               </ul>
@@ -57,7 +62,8 @@ export const Chat = () => {
                   e.preventDefault();
                   if (socketState) {
                     socketState.emit("message", {
-                      message: inputMessage,
+                      type: MessageType.MESSAGE,
+                      content: inputMessage,
                       uid: userId,
                     });
                   }
