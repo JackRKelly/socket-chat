@@ -1,3 +1,3 @@
-import { Message } from "./types";
+import { Message, JoinSocket, JoinChat } from "./types";
 
-export type { Message };
+export type { Message, JoinSocket, JoinChat };

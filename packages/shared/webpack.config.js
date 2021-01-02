@@ -4,6 +4,7 @@ var path = require("path");
 var fs = require("fs");
 
 var webpack_opts = {
+  watch: true,
   mode: "development",
   entry: "./src/index.ts",
   target: "node",
@@ -15,6 +16,10 @@ var webpack_opts = {
   },
   resolve: {
     extensions: [".ts", ".js"],
+  },
+  watchOptions: {
+    aggregateTimeout: 200,
+    poll: 1000,
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
