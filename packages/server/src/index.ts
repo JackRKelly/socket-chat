@@ -13,9 +13,12 @@ const io = socketIO(http, {
     credentials: true,
   },
 });
+//Routes
+import auth from "./api/auth";
 
-app.get("/", function (req: Request, res: Response) {
-  res.send("Hello Socket");
+app.use("/api/auth", auth);
+app.get("/", (req: Request, res: Response) => {
+  res.redirect("http://localhost:5000");
 });
 app.use(cors({ origin: "http://localhost:5000" }));
 
@@ -26,12 +29,19 @@ io.on("connection", (socket: JoinSocket) => {
     //Emit message to all users including sender
     socket.uid = join.uid;
 
+    if (join.uid === 4) {
+      socket.name = "Jack";
+    } else {
+      socket.name = "John";
+    }
+
     io.emit("message", {
-      type: "message",
-      content: `${join.uid} has connected.`,
+      type: "indicator",
+      content: `${socket.name} has connected.`,
       uid: 0,
+      name: "server",
     });
-    console.log(`${join.uid} has joined the chat`);
+    console.log(`${socket.uid} has joined the chat`);
   });
 
   socket.emit("request join");
@@ -39,6 +49,7 @@ io.on("connection", (socket: JoinSocket) => {
   socket.on("message", (msg: Message) => {
     //Emit message to all users including sender
     msg.uid = socket.uid;
+    msg.name = socket.name;
     io.emit("message", msg);
     console.log(`${socket.uid} said ${msg.content}`);
   });
