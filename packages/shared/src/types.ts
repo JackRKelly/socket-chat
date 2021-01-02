@@ -3,12 +3,11 @@ import { Socket } from "socket.io";
 export interface Message {
   type: string;
   content: string;
-  uid: number;
-  name?: string;
+  uid?: number;
 }
 
 export interface JoinChat {
-  name: string;
+  uid: number;
 }
 
-export type JoinSocket = Socket & { name?: string };
+export type JoinSocket = Socket & { uid?: number };
