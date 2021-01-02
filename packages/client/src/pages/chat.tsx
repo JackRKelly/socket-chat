@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
-import { Message } from "shared/lib";
+import { Message, JoinSocket } from "shared/src";
 
 export const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [socketState, setSocketState] = useState<Socket>();
-  const [userId] = useState(Math.floor(Math.random() * 100));
+  const [joinedChat, setJoinedChat] = useState(false);
+  const [userId] = useState(5);
   const [inputMessage, setInputMessage] = useState("");
 
   useEffect(() => {
     const socket = io("localhost:3000");
     setSocketState(socket);
 
-    socket.on("message", (message: Message) => {
-      console.log(message);
+    //Sent from server after socket connection
+    socket.on("request join", () => {
+      //Link uid to socket
+      socket.emit("join chat", { uid: userId });
+      setJoinedChat(true);
+    });
 
+    socket.on("message", (message: Message) => {
       setMessages((prevState) => [...prevState, message]);
     });
 
@@ -38,12 +44,7 @@ export const Chat = () => {
             <div className="px-4 py-4 sm:px-0">
               <ul>
                 {messages.map((message, index) => (
-                  <li
-                    key={index}
-                    style={{
-                      color: message.uid === userId ? "blue " : "black",
-                    }}
-                  >
+                  <li key={index}>
                     {message.uid}: {message.content}
                   </li>
                 ))}
@@ -51,13 +52,14 @@ export const Chat = () => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (socketState && inputMessage) {
+
+                  if (socketState && inputMessage && joinedChat) {
                     socketState.emit("message", {
                       type: "message",
                       content: inputMessage,
-                      uid: userId,
                     });
                   }
+
                   setInputMessage("");
                 }}
               >
@@ -71,6 +73,7 @@ export const Chat = () => {
                       name="message"
                       value={inputMessage}
                       required
+                      disabled={!joinedChat}
                       onChange={(e) => setInputMessage(e.target.value)}
                       className="border p-2 block w-full shadow-sm placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
                       placeholder="Message"
