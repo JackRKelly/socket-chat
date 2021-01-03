@@ -41,7 +41,7 @@ io.on("connection", (socket: JoinSocket) => {
       uid: 0,
       name: "server",
     });
-    console.log(`${socket.uid} has joined the chat`);
+    console.log(`${socket.name} has joined the chat`);
   });
 
   socket.emit("request join");
@@ -51,7 +51,7 @@ io.on("connection", (socket: JoinSocket) => {
     msg.uid = socket.uid;
     msg.name = socket.name;
     io.emit("message", msg);
-    console.log(`${socket.uid} said ${msg.content}`);
+    console.log(`${socket.name} said ${msg.content}`);
   });
 
   io.on("disconnect", (socket: JoinSocket) => {

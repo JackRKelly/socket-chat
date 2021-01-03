@@ -1,4 +1,10 @@
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import {
+  MutableRefObject,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { io, Socket } from "socket.io-client";
 import { Message } from "shared/src";
 
@@ -8,17 +14,10 @@ export const Chat = () => {
   const [joinedChat, setJoinedChat] = useState(false);
   const [userId] = useState(5);
   const [inputMessage, setInputMessage] = useState("");
-  const refContainer = useRef<HTMLLIElement | null>(null);
+  const refEnd = useRef<HTMLDivElement | null>(null);
 
-  const scrollToTop = () => {
-    console.log(refContainer);
-
-    if (refContainer) {
-      const { current } = refContainer;
-      if (current) {
-        current.scrollIntoView({ behavior: "smooth" });
-      }
-    }
+  const scrollToBottom = () => {
+    refEnd?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -33,13 +32,17 @@ export const Chat = () => {
     });
 
     socket.on("message", (message: Message) => {
-      setMessages((prevState) => [message, ...prevState]);
+      setMessages((prevState) => [...prevState, message]);
     });
 
     return () => {
       socket.disconnect();
     };
   }, [userId]);
+
+  useLayoutEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <div className="bg-white">
@@ -55,7 +58,6 @@ export const Chat = () => {
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div className="max-h-96 px-4 py-4 sm:px-0 overflow-y-scroll">
               <ul className="pr-4 flex flex-row flex-wrap">
-                <li ref={refContainer}></li>
                 {messages.map((message, index) => (
                   <li
                     key={index}
@@ -83,6 +85,7 @@ export const Chat = () => {
                     </div>
                   </li>
                 ))}
+                <div ref={refEnd}></div>
               </ul>
             </div>
             <form
@@ -95,7 +98,7 @@ export const Chat = () => {
                     content: inputMessage,
                   });
                 }
-                scrollToTop();
+
                 setInputMessage("");
               }}
               className="my-4"
