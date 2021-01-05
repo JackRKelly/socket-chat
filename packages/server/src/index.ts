@@ -13,10 +13,7 @@ const io = socketIO(http, {
     credentials: true,
   },
 });
-//Routes
-import auth from "./api/auth";
 
-app.use("/api/auth", auth);
 app.get("/", (req: Request, res: Response) => {
   res.redirect("http://localhost:5000");
 });
